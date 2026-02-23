@@ -1,0 +1,26 @@
+{
+  "name": "koba/filter-builder-eloquent",
+  "description": "Extension for the core filter builder library that allows applying filters on eloquent queries.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wouter Henderickx",
+      "email": "wouter.henderickx@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1.0",
+    "koba/filter-builder-core": "^1.0",
+    "illuminate/database": "^11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Koba\\FilterBuilder\\Eloquent\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.0",
+    "phpstan/phpstan-deprecation-rules": "^2.0"
+  }
+}
