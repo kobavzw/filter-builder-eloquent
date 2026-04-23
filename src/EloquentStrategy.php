@@ -75,15 +75,17 @@ class EloquentStrategy implements StrategyInterface
     private function getApplyChildrenFn($type, GroupType $groupType, $children)
     {
         return static function ($qry) use ($groupType, $children) {
-            foreach ($children as $child) {
-                if ($groupType === GroupType::AND) {
-                    $child->apply($qry);
-                } else {
-                    $qry->orWhere(function ($qry) use ($child) {
+            $qry->where(function ($qry) use ($groupType, $children) {
+                foreach ($children as $child) {
+                    if ($groupType === GroupType::AND) {
                         $child->apply($qry);
-                    });
+                    } else {
+                        $qry->orWhere(function ($qry) use ($child) {
+                            $child->apply($qry);
+                        });
+                    }
                 }
-            }
+            });
         };
     }
 
